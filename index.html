@@ -195,15 +195,19 @@
                         <td style="width: 100%; vertical-align: top; margin: 0px; padding: 10px;">
                             <div class="MainContentTitle">
                                 <br>
-                                <h3>THÔNG TIN CÁ NHÂN</h3> <br>
+                                <h3>THÔNG TIN CÁ NHÂN</h3>
                                 <hr>
                             </div>
                             <div class="MainContent">
-
                                 <div class="row">
                                     <span class="dxeBase_Mulberry Title"
-                                        id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbt1">THÔNG TIN SINH
-                                        VIÊN</span>
+                                        id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbt1">THÔNG TIN SINH VIÊN
+                                        <a href="change.html">
+                                            <button id="btn2" class="btn2">
+                                                <i class="bi bi-pencil-square bi-3x"></i>
+                                            </button>
+                                        </a>
+                                    </span>
                                     <hr>
                                 </div>
 
@@ -241,34 +245,34 @@
                                             id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbTextInfo1"><strong
                                                 style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Họ
                                                 và
-                                                tên : </strong><span
+                                                tên : </strong><span id="fullName"
                                                 style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">Hà
                                                 Vĩnh Phước</span><br>
                                             <strong
                                                 style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Năm
                                                 vào trường :
-                                            </strong><span
+                                            </strong><span id="year"
                                                 style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">2021</span><br>
                                             <strong
                                                 style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Bậc
-                                                đào tạo : </strong><span
+                                                đào tạo : </strong><span id="degree"
                                                 style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">Đại
                                                 học đại trà</span>
                                             <br>
                                             <strong
                                                 style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Chương
-                                                trình : </strong><span
+                                                trình : </strong><span id="major"
                                                 style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">Khoa
                                                 học máy tính 2021</span><br>
                                             <strong
                                                 style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Khoa/Viện
-                                                quản lý : </strong><span
+                                                quản lý : </strong><span id="faculty"
                                                 style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">Trường
                                                 Công nghệ thông tin và
                                                 Truyền thông</span><br>
                                             <strong
                                                 style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Tình
-                                                trạng học tập : </strong><span
+                                                trạng học tập : </strong><span id="status"
                                                 style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">Học</span><br></span>
                                     </div>
                                     <div class="col-md-4">
@@ -276,28 +280,45 @@
                                             id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbTextInfo2"><strong
                                                 style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Giới
                                                 tính : </strong>
-                                            <span
+                                            <span id="sex"
                                                 style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">Nam
                                             </span><br>
-                                            <strong
-                                                style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Lớp :
+                                            <strong "
+                                                style=" font-family: 'Times New Roman' , Times; font-size:
+                                                18px;font-weight: normal; font-style: italic;">Lớp :
                                             </strong>
-                                            <span
-                                                style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">Khoa
+                                            <span id="class" style=" font-family: 'Times New Roman' , Times; font-size: 18px;
+                                                font-weight: bold;">Khoa
                                                 học máy tính
                                                 02-K66</span><br>
                                             <strong
                                                 style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Khóa
                                                 học : </strong>
-                                            <span
+                                            <span id="course"
                                                 style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">66</span><br>
                                             <strong
                                                 style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Email :
                                             </strong>
-                                            <span
+                                            <span id="email"
                                                 style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">phuoc.hv215455@sis.hust.edu.vn</span><br></span>
+
+                                        <script>
+                                            // Lấy dữ liệu từ localStorage và hiển thị lên trang
+                                            document.getElementById("fullName").innerText = localStorage.getItem("fullName");
+                                            document.getElementById("year").innerText = localStorage.getItem("year");
+                                            document.getElementById("degree").innerText = localStorage.getItem("degree");
+                                            document.getElementById("major").innerText = localStorage.getItem("major");
+                                            document.getElementById("faculty").innerText = localStorage.getItem("faculty");
+                                            document.getElementById("status").innerText = localStorage.getItem("status");
+                                            document.getElementById("sex").innerText = localStorage.getItem("sex");
+                                            document.getElementById("class").innerText = localStorage.getItem("class");
+                                            document.getElementById("course").innerText = localStorage.getItem("course");
+                                            document.getElementById("email").innerText = localStorage.getItem("email");
+                                        </script>
                                     </div>
                                 </div>
+
+
 
                                 <div class="row">
                                     <span class="dxeBase_Mulberry Title"

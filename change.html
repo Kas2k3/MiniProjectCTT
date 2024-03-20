@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="design.css">
+    <title>Change Information</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <h2>Chỉnh sửa thông tin</h2>
+        <form id="changeForm" action="#" method="post" onsubmit="updateAndRedirect(event)">
+            <div class="form-group">
+                <label for="fullName">Họ và tên:</label>
+                <input type="text" id="fullName" name="fullName">
+            </div>
+            <div class="form-group">
+                <label for="year">Năm vào trường:</label>
+                <input type="text" id="year" name="year">
+            </div>
+            <div class="form-group">
+                <label for="degree">Bậc đào tạo:</label>
+                <input type="text" id="degree" name="degree">
+            </div>
+            <div class="form-group">
+                <label for="major">Chương trình:</label>
+                <input type="text" id="major" name="major">
+            </div>
+            <div class="form-group">
+                <label for="faculty">Khoa/Viện quản lý:</label>
+                <input type="text" id="faculty" name="faculty">
+            </div>
+            <div class="form-group">
+                <label for="status">Tình trạng học tập:</label>
+                <input type="text" id="status" name="status">
+            </div>
+            <div class="form-group">
+                <label for="sex">Giới tính:</label>
+                <input type="text" id="sex" name="sex">
+            </div>
+            <div class="form-group">
+                <label for="class">Lớp:</label>
+                <input type="text" id="class" name="class">
+            </div>
+            <div class="form-group">
+                <label for="course">Khóa học:</label>
+                <input type="text" id="course" name="course">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email">
+            </div>
+            <div class="btn-group">
+                <button type="submit" class="btn">OK</button>
+                <button type="button" class="btn" onclick="window.location.href='index.html'">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+
+    <script>
+        function updateAndRedirect(event) {
+            event.preventDefault();
+
+            var fullName = document.getElementById("fullName").value;
+            var year = document.getElementById("year").value;
+            var degree = document.getElementById("degree").value;
+            var major = document.getElementById("major").value;
+            var faculty = document.getElementById("faculty").value;
+            var status = document.getElementById("status").value;
+            var sex = document.getElementById("sex").value;
+            var classValue = document.getElementById("class").value;
+            var course = document.getElementById("course").value;
+            var email = document.getElementById("email").value;
+
+            localStorage.setItem("fullName", fullName);
+            localStorage.setItem("year", year);
+            localStorage.setItem("degree", degree);
+            localStorage.setItem("major", major);
+            localStorage.setItem("faculty", faculty);
+            localStorage.setItem("status", status);
+            localStorage.setItem("sex", sex);
+            localStorage.setItem("class", classValue);
+            localStorage.setItem("course", course);
+            localStorage.setItem("email", email);
+
+            window.location.href = "index.html";
+        }
+
+        window.onload = function () {
+            var fullName = localStorage.getItem("fullName");
+            var year = localStorage.getItem("year");
+            var degree = localStorage.getItem("degree");
+            var major = localStorage.getItem("major");
+            var faculty = localStorage.getItem("faculty");
+            var status = localStorage.getItem("status");
+            var sex = localStorage.getItem("sex");
+            var classValue = localStorage.getItem("class");
+            var course = localStorage.getItem("course");
+            var email = localStorage.getItem("email");
+
+            document.getElementById("fullName").value = fullName;
+            document.getElementById("year").value = year;
+            document.getElementById("degree").value = degree;
+            document.getElementById("major").value = major;
+            document.getElementById("faculty").value = faculty;
+            document.getElementById("status").value = status;
+            document.getElementById("sex").value = sex;
+            document.getElementById("class").value = classValue;
+            document.getElementById("course").value = course;
+            document.getElementById("email").value = email;
+        }
+    </script>
+</body>
+
+</html>
