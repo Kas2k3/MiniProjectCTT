@@ -287,7 +287,7 @@
                                                 style=" font-family: 'Times New Roman' , Times; font-size:
                                                 18px;font-weight: normal; font-style: italic;">Lớp :
                                             </strong>
-                                            <span id="class" style=" font-family: 'Times New Roman' , Times; font-size: 18px;
+                                            <span id="classStudent" style=" font-family: 'Times New Roman' , Times; font-size: 18px;
                                                 font-weight: bold;">Khoa
                                                 học máy tính
                                                 02-K66</span><br>
@@ -311,9 +311,33 @@
                                             document.getElementById("faculty").innerText = localStorage.getItem("faculty");
                                             document.getElementById("status").innerText = localStorage.getItem("status");
                                             document.getElementById("sex").innerText = localStorage.getItem("sex");
-                                            document.getElementById("class").innerText = localStorage.getItem("class");
+                                            document.getElementById("classStudent").innerText = localStorage.getItem("classStudent");
                                             document.getElementById("course").innerText = localStorage.getItem("course");
                                             document.getElementById("email").innerText = localStorage.getItem("email");
+
+                                            if (fullName === null || year === null || degree === null || major === null || faculty === null || status === null || sex == null || classStudent == null || course == null || email == null) {
+                                                fullName = "Hà Vĩnh Phước";
+                                                year = "2021";
+                                                degree = "Đại học đại trà";
+                                                major = "Khoa học máy tính 2021";
+                                                faculty = "Trường Công nghệ thông tin và Truyền thông";
+                                                status = "Học";
+                                                sex = "Nam";
+                                                classStudent = "Khoa học máy tính 02-K66";
+                                                course = "66";
+                                                email = "phuoc.hv215455@sis.hust.edu.vn";
+
+                                                localStorage.setItem("fullName", fullName);
+                                                localStorage.setItem("year", year);
+                                                localStorage.setItem("degree", degree);
+                                                localStorage.setItem("major", major);
+                                                localStorage.setItem("faculty", faculty);
+                                                localStorage.setItem("status", status);
+                                                localStorage.setItem("sex", sex);
+                                                localStorage.setItem("classStudent", classStudent);
+                                                localStorage.setItem("course", course);
+                                                localStorage.setItem("email", email);
+                                            }
                                         </script>
                                     </div>
                                 </div>

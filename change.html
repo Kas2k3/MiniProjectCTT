@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="design.css">
     <title>Change Information</title>
-
 </head>
 
 <body>
@@ -44,8 +43,8 @@
                 <input type="text" id="sex" name="sex">
             </div>
             <div class="form-group">
-                <label for="class">Lớp:</label>
-                <input type="text" id="class" name="class">
+                <label for="classStudent">Lớp:</label>
+                <input type="text" id="classStudent" name="classStudent">
             </div>
             <div class="form-group">
                 <label for="course">Khóa học:</label>
@@ -57,41 +56,12 @@
             </div>
             <div class="btn-group">
                 <button type="submit" class="btn">OK</button>
-                <button type="button" class="btn" onclick="window.location.href='index.html'">Cancel</button>
+                <button type="button" class="btn" onclick="cancel()">Cancel</button>
             </div>
         </form>
     </div>
 
-
     <script>
-        function updateAndRedirect(event) {
-            event.preventDefault();
-
-            var fullName = document.getElementById("fullName").value;
-            var year = document.getElementById("year").value;
-            var degree = document.getElementById("degree").value;
-            var major = document.getElementById("major").value;
-            var faculty = document.getElementById("faculty").value;
-            var status = document.getElementById("status").value;
-            var sex = document.getElementById("sex").value;
-            var classValue = document.getElementById("class").value;
-            var course = document.getElementById("course").value;
-            var email = document.getElementById("email").value;
-
-            localStorage.setItem("fullName", fullName);
-            localStorage.setItem("year", year);
-            localStorage.setItem("degree", degree);
-            localStorage.setItem("major", major);
-            localStorage.setItem("faculty", faculty);
-            localStorage.setItem("status", status);
-            localStorage.setItem("sex", sex);
-            localStorage.setItem("class", classValue);
-            localStorage.setItem("course", course);
-            localStorage.setItem("email", email);
-
-            window.location.href = "index.html";
-        }
-
         window.onload = function () {
             var fullName = localStorage.getItem("fullName");
             var year = localStorage.getItem("year");
@@ -100,7 +70,7 @@
             var faculty = localStorage.getItem("faculty");
             var status = localStorage.getItem("status");
             var sex = localStorage.getItem("sex");
-            var classValue = localStorage.getItem("class");
+            var classStudent = localStorage.getItem("classStudent");
             var course = localStorage.getItem("course");
             var email = localStorage.getItem("email");
 
@@ -111,9 +81,41 @@
             document.getElementById("faculty").value = faculty;
             document.getElementById("status").value = status;
             document.getElementById("sex").value = sex;
-            document.getElementById("class").value = classValue;
+            document.getElementById("classStudent").value = classStudent;
             document.getElementById("course").value = course;
             document.getElementById("email").value = email;
+        }
+
+        function updateAndRedirect(event) {
+            event.preventDefault();
+
+            var fullName = document.getElementById("fullName").value;
+            var year = document.getElementById("year").value;
+            var degree = document.getElementById("degree").value;
+            var major = document.getElementById("major").value;
+            var faculty = document.getElementById("faculty").value;
+            var status = document.getElementById("status").value;
+            var sex = document.getElementById("sex").value;
+            var classStudent = document.getElementById("classStudent").value;
+            var course = document.getElementById("course").value;
+            var email = document.getElementById("email").value;
+
+            localStorage.setItem("fullName", fullName);
+            localStorage.setItem("year", year);
+            localStorage.setItem("degree", degree);
+            localStorage.setItem("major", major);
+            localStorage.setItem("faculty", faculty);
+            localStorage.setItem("status", status);
+            localStorage.setItem("sex", sex);
+            localStorage.setItem("classStudent", classStudent);
+            localStorage.setItem("course", course);
+            localStorage.setItem("email", email);
+
+            window.location.href = "index.html";
+        }
+
+        function cancel() {
+            window.location.href = "index.html";
         }
     </script>
 </body>
