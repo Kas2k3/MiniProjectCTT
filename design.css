@@ -400,14 +400,14 @@ h2 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #007bff;
+    background-color: #848181;
     color: #fff;
     font-weight: bold;
     transition: background-color 0.3s;
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    background-color: #313131;
 }
 
 .btn2 {
@@ -424,4 +424,21 @@ h2 {
 
 .btn2:hover {
     background-color: #969292;
+}
+
+.col-md-3 .update1 label {
+    display: inline-block;
+    width: 120px;
+    margin-right: 22px;
+    margin-top: 25px;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 20px 10px;
+    justify-content: space-between;
 }
