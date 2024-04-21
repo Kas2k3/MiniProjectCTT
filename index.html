@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="design.css">
+    <script src="ttsv.js"></script>
 
     <title>HaVinhPhuoc20215455</title>
     <style>
@@ -62,13 +63,12 @@
             <table class="dxpnlControl_Mulberry leftMenuPanel" id="ctl00_ctl00_contentPane_MainPanel_leftMenuPane">
                 <tbody>
                     <tr>
-                        <td id"left" style="vertical-align: top; margin: 0px;">
+                        <td style="vertical-align: top; margin: 0px;">
                             <div id="ctl00_ctl00_contentPane_MainPanel_leftMenuPane_EB"
                                 class="dxpnl-bar dxpnlControl_Mulberry LeftMenuExpandBar">
                                 <div id="ctl00_ctl00_contentPane_MainPanel_leftMenuPane_EBB" class="dxpnl-btn dxpnl-fp"
                                     style="margin-top: -12px;">
-                                    <img id="ctl00_ctl00_contentPane_MainPanel_leftMenuPane_EBBI"
-                                        class="dxWeb_pnlExpand_Mulberry" alt="">
+                                    <img id="ctl00_ctl00_contentPane_MainPanel_leftMenuPane_EBBI" alt="">
                                 </div>
                             </div>
                             <div class="dxpnlControl_Mulberry leftMenuPanel"
@@ -191,8 +191,7 @@
                             </div>
                         </td>
 
-                        <td id="main"
-                            style=" display: block; width: 100%; vertical-align: top; margin: 0px; padding: 10px;">
+                        <td style=" width: 100%; vertical-align: top; margin: 0px; padding: 10px;">
                             <div class="MainContentTitle">
                                 <br>
                                 <h3>THÔNG TIN CÁ NHÂN</h3>
@@ -202,8 +201,15 @@
                                 <div class="row">
                                     <span class="dxeBase_Mulberry Title"
                                         id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbt1">THÔNG TIN SINH VIÊN
-                                        <button id="Edit" class="btn btn-secondary" onclick="edit()">Chỉnh
+                                        <button id="edit_btn" class="btn btn-secondary" onclick="editInfor()">Chỉnh
                                             sửa</button>
+                                        <span id="button" style="display: none">
+                                            <button id="saveIn4" class="btn btn-secondary" onclick="save()">OK</button>
+                                            <button id="cancelEdit" class="btn btn-secondary"
+                                                onclick="cancelEditInfor()">Cancel</button>
+                                            <button type="reset" class="btn btn-secondary"
+                                                onclick="reset()">Reset</button>
+                                        </span>
                                     </span>
                                     <hr>
                                 </div>
@@ -224,6 +230,8 @@
                                             style="left:0px;top:0px;z-index:29999;display:none;position:absolute;">
 
                                         </div>
+                                        <input type="file" accept="image/*" id="editImage" name="editImage"
+                                            style="display: none; margin-top: 15px;">
 
                                         <div class="center">
                                             <span class="dxeBase_Mulberry normalText"
@@ -231,7 +239,7 @@
                                                 <strong
                                                     style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">
                                                     MSSV:</strong>
-                                                <span
+                                                <span id="mssv"
                                                     style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">20215455</span>
                                         </div>
 
@@ -298,48 +306,9 @@
                                             </strong>
                                             <span id="email"
                                                 style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">phuoc.hv215455@sis.hust.edu.vn</span><br></span>
-
-                                        <!-- <script>
-                                            // Lấy dữ liệu từ localStorage và hiển thị lên trang
-                                            document.getElementById("fullName").innerText = localStorage.getItem("fullName");
-                                            document.getElementById("year").innerText = localStorage.getItem("year");
-                                            document.getElementById("degree").innerText = localStorage.getItem("degree");
-                                            document.getElementById("major").innerText = localStorage.getItem("major");
-                                            document.getElementById("faculty").innerText = localStorage.getItem("faculty");
-                                            document.getElementById("status").innerText = localStorage.getItem("status");
-                                            document.getElementById("sex").innerText = localStorage.getItem("sex");
-                                            document.getElementById("classStudent").innerText = localStorage.getItem("classStudent");
-                                            document.getElementById("course").innerText = localStorage.getItem("course");
-                                            document.getElementById("email").innerText = localStorage.getItem("email");
-
-                                            if (fullName === null || year === null || degree === null || major === null || faculty === null || status === null || sex == null || classStudent == null || course == null || email == null) {
-                                                fullName = "Hà Vĩnh Phước";
-                                                year = "2021";
-                                                degree = "Đại học đại trà";
-                                                major = "Khoa học máy tính 2021";
-                                                faculty = "Trường Công nghệ thông tin và Truyền thông";
-                                                status = "Học";
-                                                sex = "Nam";
-                                                classStudent = "Khoa học máy tính 02-K66";
-                                                course = "66";
-                                                email = "phuoc.hv215455@sis.hust.edu.vn";
-
-                                                localStorage.setItem("fullName", fullName);
-                                                localStorage.setItem("year", year);
-                                                localStorage.setItem("degree", degree);
-                                                localStorage.setItem("major", major);
-                                                localStorage.setItem("faculty", faculty);
-                                                localStorage.setItem("status", status);
-                                                localStorage.setItem("sex", sex);
-                                                localStorage.setItem("classStudent", classStudent);
-                                                localStorage.setItem("course", course);
-                                                localStorage.setItem("email", email);
-                                            }
-                                        </script> -->
                                     </div>
+                                    <script src="ttsv.js"></script>
                                 </div>
-
-
 
                                 <div class="row">
                                     <span class="dxeBase_Mulberry Title"
@@ -497,254 +466,7 @@
                                 </div>
                                 <br>
                                 <br>
-
                             </div>
-                        </td>
-
-
-                        <!-- EditIn4 -->
-                        <td id="edit"
-                            style="display: none; width: 100%; vertical-align: top; margin: 0px; padding: 10px;">
-                            <div class="MainContentTitle">
-                                <br>
-                                <h3>THÔNG TIN CÁ NHÂN</h3>
-                                <hr>
-                            </div>
-                            <script src="TTSV.js"></script>
-                            <div class="MainContent">
-                                <div class="row">
-                                    <span class="dxeBase_Mulberry Title"
-                                        id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbt1">THÔNG TIN SINH VIÊN
-
-                                        <button id="saveIn4" class="btn btn-primary" onclick="save()">OK</button>
-                                        <button id="cancelEdit" class="btn btn-secondary"
-                                            onclick="cancel()">Cancel</button>
-                                        <button type="reset" class="btn btn-danger" onclick="cancel()">Reset</button>
-                                    </span>
-                                    <hr>
-                                </div>
-
-                                <div class="hr"></div>
-                                <div class="row">
-                                    <div class="col-md-3">
-
-                                        <div id="ctl00_ctl00_contentPane_MainPanel_MainContent_UserImageCPanel_LD"
-                                            class="dxpnlLoadingDivWithContent_Mulberry dxlpLoadingDivWithContent_Mulberry dx-ft"
-                                            style="left:0px;top:0px;z-index:29999;display:none;position:absolute;">
-
-                                        </div>
-
-                                        <div class="update1">
-                                            <label for="editImage">Cập nhật ảnh: <input type="file" alt="avatar"
-                                                    id="editImage" accept="image/*" required=""></label>
-                                            <label for="editMSSV">MSSV: <input type="text" id="editMSSV" name="mssv"
-                                                    placeholder="VD: 20211234" required=""></label>
-                                        </div>
-
-
-                                    </div>
-                                    <div class="col-md-4">
-                                        <span class="dxeBase_Mulberry normalText"
-                                            id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbTextInfo1">
-                                            <label for="editFullName">Họ và tên: <input type="text" id="editFullName"
-                                                    placeholder="VD: Nguyễn Văn A" required=""></label><br>
-                                            <label for="editYear">Năm vào trường: <input type="number" id="editYear"
-                                                    min="2015" max="2030"></label><br>
-                                            <label for="editDegree">Bậc đào tạo: <input type="text" id="editDegree"
-                                                    placeholder="VD: Đại học đại trà" required=""></label><br>
-                                            <label for="editMajor">Chương trình: <input type="text" id="editMajor"
-                                                    placeholder="VD: Khoa học máy tính" required=""></label><br>
-                                            <label for="editFaculty">Khoa/Viện quản lý: <input type="text"
-                                                    id="editFaculty" placeholder="VD: CNTT & TT"
-                                                    required=""></label><br>
-                                            <label for="editStatus">Tình trạng học tập: </label>
-                                            <select id="editSex" required="">
-                                                <option value="Học">Học</option>
-                                                <option value="Đã thôi học">Đã thôi học</option>
-                                            </select><br>
-                                        </span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <span class="dxeBase_Mulberry normalText"
-                                            id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbTextInfo2">
-                                            <label for="editSex">Giới tính: </label>
-                                            <select id="editSex" required="">
-                                                <option value="Nam">Nam</option>
-                                                <option value="Nữ">Nữ</option>
-                                                <option value="Khác">Khác</option>
-                                            </select><br>
-                                            <label for="editClassStudent">Lớp: <input type="text" id="editClassStudent"
-                                                    placeholder="VD: IT1-02" required=""></label><br>
-                                            <label for="editCourse">Khóa học: <input type="number" id="editCourse"
-                                                    min="60" max="75"></label><br>
-                                            <label for="editEmail">Email: <input type="text" id="editEmail"
-                                                    placeholder="VD: a.nv@sis.hust.edu.vn" required=""></label><br>
-                                        </span>
-                                    </div>
-                                    <script src="TTSV.js"></script>
-
-                                </div>
-                            </div>
-
-
-
-                            <div class="row">
-                                <span class="dxeBase_Mulberry Title"
-                                    id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbT2">THÔNG TIN HỌC TẬP</span>
-                            </div>
-
-                            <div class="hr"></div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <span class="dxeBase_Mulberry normalText"
-                                        id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbTextInfo3"><strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Tổng
-                                            kết học kỳ : </strong>
-                                        <span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">20231</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Trung
-                                            bình tích lũy :
-                                        </strong>
-                                        <span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">3.0</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Số
-                                            TC nợ đăng ký : </strong>
-                                        <span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">0</span><br></span>
-                                </div>
-                                <div class="col-md-6">
-                                    <span class="dxeBase_Mulberry normalText"
-                                        id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbTextInfo4">
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Số
-                                            TC
-                                            tích lũy : </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">87</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Trình
-                                            độ sinh viên :
-                                        </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">3</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Mức
-                                            cảnh báo : </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">M0</span><br></span>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <span class="dxeBase_Mulberry Title"
-                                    id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbT3">THÔNG TIN CÁ NHÂN</span>
-                            </div>
-
-                            <div class="hr"></div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <span class="dxeBase_Mulberry normalText"
-                                        id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbTextInfo5"><strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Dân
-                                            tộc : </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">Mường</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Năm
-                                            TN cấp 3 :
-                                        </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">2021</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Địa
-                                            chỉ : </strong> <span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">XÃ
-                                            LƯƠNG SƠN, HUYỆN YÊN LẬP,
-                                            TỈNH PHÚ THỌ</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Số
-                                            CMTND : </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">025***02</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Nơi
-                                            cấp :
-                                        </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">PHÚ
-                                            THỌ</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Họ
-                                            tên bố : </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">HÀ
-                                            VĂN TUẤN</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Năm
-                                            sinh : </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">1977</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Nghề
-                                            nghiệp : </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">LÀM
-                                            NÔNG</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Điện
-                                            thoại : </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">096***46</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Email :
-                                        </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">
-                                            KHÔNG CÓ</span><br></span>
-                                </div>
-                                <div class="col-md-6">
-                                    <span class="dxeBase_Mulberry normalText"
-                                        id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbTextInfo6"><strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Tôn
-                                            giáo : </strong>
-                                        <span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">KHÔNG</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Trường
-                                            THPT : </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">LƯƠNG
-                                            SƠN - PHÚ
-                                            THỌ</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Hộ
-                                            khẩu : </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">XÃ
-                                            LƯƠNG SƠN, HUYỆN YÊN LẬP, TỈNH PHÚ
-                                            THỌ</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Số
-                                            Điện thoại : </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">033***51</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Họ
-                                            tên mẹ :
-                                        </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">NGÔ
-                                            THỊ HẠNH</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Năm
-                                            sinh : </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">1979</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Nghề
-                                            nghiệp : </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">LÀM
-                                            NÔNG</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Điện
-                                            thoại :
-                                        </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">036***59</span><br>
-                                        <strong
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px;font-weight: normal; font-style: italic;">Email :
-                                        </strong><span
-                                            style="font-family: 'Times New Roman', Times; font-size: 18px; font-weight: bold;">KHÔNG
-                                            CÓ</span><br></span>
-                                </div>
-                            </div>
-                            <br>
-                            <br>
-
                         </td>
                     </tr>
                 </tbody>
