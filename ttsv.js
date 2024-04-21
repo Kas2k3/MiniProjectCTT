@@ -1,4 +1,4 @@
-const ttsv_default = {
+var ttsv_default = {
     studentFullName: "Hà Vĩnh Phước",
     studentMSSV: "20215455",
     studentYear: "2021",
@@ -13,7 +13,7 @@ const ttsv_default = {
     srcImage: "./Contents/Images/person.png"
 }
 
-const ttsv_new = {
+var ttsv_new = {
     studentFullName: "Hà Vĩnh Phước",
     studentMSSV: "20215455",
     studentYear: "2021",
@@ -23,14 +23,14 @@ const ttsv_new = {
     studentStatus: "Học",
     studentSex: "Nam",
     studentClassStudent: "IT1-02",
-    studentCourse: '66',
+    studentCourse: "66",
     studentEmail: "Phuoc.HV215455@sis.hust.edu.vn",
     srcImage: "./Contents/Images/person.png"
 }
 
 function createBG() {
-    document.getElementById("fullName").innerHTML = ttsv_new["studentFullName"];
     document.getElementById("mssv").innerHTML = ttsv_new["studentMSSV"];
+    document.getElementById("fullName").innerHTML = ttsv_new["studentFullName"];
     document.getElementById("year").innerHTML = ttsv_new["studentYear"];
     document.getElementById("degree").innerHTML = ttsv_new["studentDegree"];
     document.getElementById("major").innerHTML = ttsv_new["studentMajor"];
@@ -44,11 +44,9 @@ function createBG() {
 }
 createBG();
 
-
-
-var srcImage_new = ttsv_new.src;
-function chooseFile(editImage) {
-    if (editImage.files && editImage.files[0]) {
+var srcImage_new = ttsv_new.srcImage;
+function chooseFile(fileInput) {
+    if (fileInput.files && fileInput.files[0]) {
         var reader = new FileReader();
         var imagePreview = document.getElementById("ctl00_ctl00_contentPane_MainPanel_MainContent_UserImageCPanel_imgUserImage");
 
@@ -56,11 +54,11 @@ function chooseFile(editImage) {
             imagePreview.src = e.target.result;
             srcImage_new = e.target.result;
         }
-        reader.readAsDataURL(editImage.files[0]);
+        reader.readAsDataURL(fileInput.files[0]);
     }
 }
 
-document.getElementById("editImage").addEventListener('change', function () {
+document.getElementById("fileInput").addEventListener('change', function () {
     chooseFile(this)
 });
 
@@ -68,10 +66,12 @@ document.getElementById("editImage").addEventListener('change', function () {
 function editInfor() {
     edit_btn.style.display = 'none';
     button.style.display = 'block';
-    editImage.style.display = 'block';
+    fileInput.style.display = 'block';
 
-    document.getElementById("fullName").innerHTML = `<input type="text" id="FullName" name="FullName" value="${ttsv_new.studentFullName}" />`;
+    document.getElementById("fileInput").value = "";
+    srcImage_new = ttsv_new.srcImage;
     document.getElementById("mssv").innerHTML = `<input type="text" id="MSSV" name="MSSV" value="${ttsv_new.studentMSSV}" />`;
+    document.getElementById("fullName").innerHTML = `<input type="text" id="FullName" name="FullName" value="${ttsv_new.studentFullName}" />`;
     document.getElementById("year").innerHTML = `<input type="text" id="Year" name="Year" value="${ttsv_new.studentYear}" />`;
     document.getElementById("degree").innerHTML = `<input type="text" id="Degree" name="Degree" value="${ttsv_new.studentDegree}" />`;
     document.getElementById("major").innerHTML = `<input type="text" id="Major" name="Major" value="${ttsv_new.studentMajor}" />`;
@@ -81,24 +81,23 @@ function editInfor() {
         <option value="Học">Học</option>
         <option value="Đã thôi học">Đã thôi học</option>
         </select>`;
-    // document.querySelector(`option[value="${TTSV_new.studentStatus}"]`).selected = true;
+    document.querySelector(`option[value="${ttsv_new.studentStatus}"]`).selected = true;
     document.getElementById("sex").innerHTML =
         `<select id="Sex" name="Sex">
     <option value="Nam">Nam</option>
     <option value="Nữ">Nữ</option>
-    <option value="Khác">Khác</option>
+    <option value="Khác">Khác</option> +
     </select>`;
-    // document.querySelector(`option[value="${TTSV_new.studentSex}"]`).selected = true;
+    document.querySelector(`option[value="${ttsv_new.studentSex}"]`).selected = true;
     document.getElementById("classStudent").innerHTML = `<input type="text" id="ClassStudent" name="ClassStudent" value="${ttsv_new.studentClassStudent}" />`;
     document.getElementById("course").innerHTML = `<input type="text" id="Course" name="Course" value="${ttsv_new.studentCourse}" />`;
     document.getElementById("email").innerHTML = `<input type="text" id="Email" name="Email" value="${ttsv_new.studentEmail}" />`;
-    document.getElementById("editImage").value = "";
-    srcImage_new = ttsv_new.srcImage;
+
 }
 
 function save() {
-    ttsv_new.studentFullName = document.getElementById("FullName").value;
     ttsv_new.studentMSSV = document.getElementById("MSSV").value;
+    ttsv_new.studentFullName = document.getElementById("FullName").value;
     ttsv_new.studentYear = document.getElementById("Year").value;
     ttsv_new.studentDegree = document.getElementById("Degree").value;
     ttsv_new.studentMajor = document.getElementById("Major").value;
@@ -112,7 +111,7 @@ function save() {
 
     button.style.display = 'none';
     edit_btn.style.display = 'block';
-    editImage.style.display = 'none';
+    fileInput.style.display = 'none';
     createBG();
     console.log(ttsv_new);
 }
@@ -121,8 +120,8 @@ function save() {
 function reset() {
     Object.assign(ttsv_new, ttsv_default);
 
-    document.getElementById("fullName").innerHTML = ttsv_default["studentFullName"];
     document.getElementById("mssv").innerHTML = ttsv_default["studentMSSV"];
+    document.getElementById("fullName").innerHTML = ttsv_default["studentFullName"];
     document.getElementById("year").innerHTML = ttsv_default["studentYear"];
     document.getElementById("degree").innerHTML = ttsv_default["studentDegree"];
     document.getElementById("major").innerHTML = ttsv_default["studentMajor"];
@@ -136,14 +135,14 @@ function reset() {
 
     button.style.display = 'none';
     edit_btn.style.display = 'block';
-    editImage.style.display = 'none';
+    fileInput.style.display = 'none';
     console.log(ttsv_default);
 }
 
 function cancelEditInfor() {
+    createBG();
     button.style.display = 'none';
     edit_btn.style.display = 'block';
-    editImage.style.display = 'none';
-    createBG();
+    fileInput.style.display = 'none';
     console.log(ttsv_new);
 }
